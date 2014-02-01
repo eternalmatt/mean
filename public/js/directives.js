@@ -12,7 +12,14 @@ angular.module('passport.directives', [])
       controller: function($scope, Factory){
         
         // SEED DATA for testing
-        $scope.children = [1,2,3,5,8,13];
+        $scope.children = [
+          { name: 1 },
+          { name: 2 },
+          { name: 3 },
+          { name: 5 },
+          { name: 8 },
+          { name: 13 }
+        ];
         
         $scope.generate = function(){
           //populate $scope.children
