@@ -3,7 +3,7 @@ angular.module('passport.directives', [])
   .directive('factory', function(){
     return {
       restrict: 'EA',
-      templateUrl: 'views/factory.html',
+      templateUrl: 'views/factories/factory.html',
       scope: {
         name: '=',
         min: '=',

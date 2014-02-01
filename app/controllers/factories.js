@@ -19,7 +19,7 @@ exports.factory = function(req, res, next, id){
 
 exports.create = function(req, res){
   var factory = new Factory(req.body);
-  factory.user = user;
+  factory.user = req.user;
   factory.save(function(err){
     res.jsonp(factory);
   });

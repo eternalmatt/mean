@@ -1,5 +1,13 @@
 <section>
 	<ul class="articles unstyled">
+	    <li ng-show="showInput">
+	        <form ng-submit="saveFactory(factory)">
+    	        <input type="text"
+    	           ng-required
+    	           ng-model="factory.name"
+    	        >
+	        </form>
+	    </li>
 	    <li ng-repeat="factory in factories">
             <factory
                 name="factory.name"
@@ -9,5 +17,11 @@
            </factory>
 	    </li>
 	</ul>
-	<h1 ng-show="factories">No factories yet. <br> Why don't you create one?</h1>
+	<h1 ng-hide="factories">No factories yet.</h1>
+	<div>
+	    Why don't you 
+	    <button ng-click="enableInput()">
+	    Create One
+        </button>
+    </div>
 </section>
