@@ -1,0 +1,13 @@
+<section>
+	<ul class="articles unstyled">
+	    <li ng-repeat="factory in factories">
+            <factory
+                name="factory.name"
+                min="factory.min"
+                max="factory.max"
+               >
+           </factory>
+	    </li>
+	</ul>
+	<h1 ng-show="factories">No factories yet. <br> Why don't you create one?</h1>
+</section>

@@ -1,6 +1,20 @@
 'use strict';
 
-angular.module('mean', ['ngCookies', 'ngResource', 'ngRoute', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.articles']);
+window.app = angular.module('passport', [
+  'ngCookies',
+  'ngResource',
+  'ngRoute',
+  'ui.bootstrap',
+  'ui.route',
+  'passport.system',
+  'passport.controller'
+]);
 
-angular.module('mean.system', []);
-angular.module('mean.articles', []);
+angular.module('passport.system', [
+  'passport.directives',
+  'passport.services.factory'
+]);
+
+angular.module('passport.controller', [
+  'passport.controller.factory'
+]);

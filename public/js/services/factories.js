@@ -1,7 +1,8 @@
 'use strict';
 
 //Articles service used for articles REST endpoint
-angular.module('mean.articles').factory('Articles', ['$resource', function($resource) {
+angular.module('passport.services.factory', [])
+  .factory('Factory', function($resource) {
     return $resource('articles/:articleId', {
         articleId: '@_id'
     }, {
@@ -9,4 +10,4 @@ angular.module('mean.articles').factory('Articles', ['$resource', function($reso
             method: 'PUT'
         }
     });
-}]);
+  })
