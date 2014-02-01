@@ -5,9 +5,9 @@ angular.module('passport.controller.popup', [])
       
       $scope.ok = function(action, factory){
         if (action === 'generate'){
-          factory.$update();
+          factory.$update(); 
         } else if (action === 'delete'){
-          
+          factory.$remove();
         }
         $modalInstance.close();
       };

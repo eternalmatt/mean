@@ -8,11 +8,12 @@
     	        >
 	        </form>
 	    </li>
-	    <li ng-repeat="factory in factories">
-            <div factory="factory"></div>
+	    <li ng-repeat="factory in factories | orderBy:'created'">
+            <div factory="factory" popup="popup">
+            </div>
 	    </li>
 	</ul>
-	<h1 ng-hide="factories">No factories yet.</h1>
+	<h1 ng-hide="!!factories">No factories yet.</h1>
 	<div>
 	    Why don't you 
 	    <button ng-click="enableInput()">

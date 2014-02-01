@@ -5,25 +5,18 @@ angular.module('passport.directives', [])
       restrict: 'EA',
       templateUrl: 'views/factories/factory.html',
       scope: {
-        factory: '='
+        factory: '=',
+        popup: '='
       },
       controller: function($scope, $modal, Factory){
-        
         $scope.order = function(val){return val;};
-        
-        $scope.openPopup = function(factory){
-          var modal = $modal.open({
-            templateUrl: 'views/factories/popup.html',
-            controller: 'PopupController',
-            resolve: {
-              factory: function(){return factory;},
-            }
-          });
+        $scope.openPopup = function(popup, factory){
+          popup.resolve.factory = function(){return factory;};
+          $modal.open(popup);
         };
       }
     };
   })
-
 
 
 angular.module('ngRightClick', [])

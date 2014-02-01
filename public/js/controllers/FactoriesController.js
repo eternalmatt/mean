@@ -1,7 +1,8 @@
 angular.module('passport.controller.factory', [])
-  .controller('FactoriesController', function($scope, Factory){
+  .controller('FactoriesController', function($scope, Factory, Popup){
     
     $scope.factories = Factory.query();
+    $scope.popup = Popup;
     
     $scope.enableInput = function(){
       $scope.showInput = true;
@@ -15,13 +16,11 @@ angular.module('passport.controller.factory', [])
       $scope.showInput = false;
       $scope.factory = {};
     };
+    
   })
   
-  .constant('SeedFactories', [
-    {
-      name: '1',
-      min: '1',
-      max: '1000',
-      children: []
-    }
-  ])
+  .constant('Popup', {
+    templateUrl: 'views/factories/popup.html',
+    controller: 'PopupController',
+    resolve: {}
+  })
