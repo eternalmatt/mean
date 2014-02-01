@@ -4,3 +4,7 @@
 node_modules/
 public/lib
 test/coverage/
+.bower-cache/
+.bower-registry/
+.project
+mongo-data/
