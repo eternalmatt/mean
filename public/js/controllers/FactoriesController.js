@@ -1,6 +1,7 @@
 angular.module('passport.controller.factory', [])
-  .controller('FactoriesController', function($scope, SeedFactories, Factory){
-    $scope.factories = SeedFactories;
+  .controller('FactoriesController', function($scope, Factory){
+    
+    $scope.factories = Factory.query();
     
     $scope.enableInput = function(){
       $scope.showInput = true;

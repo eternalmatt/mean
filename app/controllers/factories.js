@@ -21,7 +21,10 @@ exports.create = function(req, res){
   var factory = new Factory(req.body);
   factory.user = req.user;
   factory.save(function(err){
-    res.jsonp(factory);
+    if (err) { res.render('error', {status: 500}); }
+    else {
+      res.jsonp(factory);
+    }
   });
 };
 

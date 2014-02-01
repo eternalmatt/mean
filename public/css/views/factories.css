@@ -1,0 +1,10 @@
+h1 {
+    text-align:center
+}
+
+factory li img {
+    width: 50px;
+}
+factory img {
+    width: 75px;
+}
