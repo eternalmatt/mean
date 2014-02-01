@@ -2,8 +2,12 @@ h1 {
     text-align:center
 }
 
+ul, li {
+    list-style-type: none;
+}
+
 [factory] li img {
-    width: 50px;
+    width: 30px;
 }
 [factory] img {
     width: 75px;

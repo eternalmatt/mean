@@ -1,7 +1,7 @@
 angular.module('passport.controller.popup', [])
     .controller('PopupController', function($scope, $modalInstance, factory){
       $scope.factory = factory;
-      $scope.button = { model: 'delete' };
+      $scope.button = { model: 'generate' };
       
       $scope.ok = function(action, factory){
         if (action === 'generate'){
