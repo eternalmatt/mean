@@ -7,6 +7,7 @@ var FactorySchema = new Schema({
   name: { type: String },
   min: { type: Number },
   max: { type: Number },
+  nodes: [{ type: Number }],
   user: { 
     type: Schema.ObjectId,
     ref: 'User'  

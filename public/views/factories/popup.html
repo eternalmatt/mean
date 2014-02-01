@@ -1,0 +1,26 @@
+<div class="modal-header">
+    <h3>Select action for factory {{factory.name}}</h3>
+</div>
+<div class="modal-body">
+    <div class="btn-group">
+        <button type="button"
+            class="btn btn-primary"
+            btn-radio="'delete'"
+            ng-model="button.model">
+            Delete
+        </button>
+        <button type="button"
+            class="btn btn-primary"
+            btn-radio="'generate'"
+            ng-model="button.model">
+            Generate
+        </button>
+    </div>
+    <div ng-show="button.model=='generate'">
+        <input type="text" ng-model="factory.number">
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok(button.model, factory)">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>    
+</div>

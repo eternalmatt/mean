@@ -4,13 +4,21 @@ var mongoose = require('mongoose')
   , Factory = mongoose.model('Factory')
   , _ = require('lodash')
   ;
+  
+function generateNumbers(factory){
+  factory.min = _.random(999);
+  factory.max = _.random(factory.min, 1000);
+  factory.nodes = _.map(Array(parseInt(factory.number)), function(){
+    return _.random(factory.min, factory.max);
+  });
+}
 
 // load a factory for a given parameter id  
 exports.factory = function(req, res, next, id){
   Factory.load(id, function(err, factory){
     if (err) return next(err);
     if (!factory) return next(new Error('Failed to load factory ' + id));
-    req.article = article;
+    req.factory = factory;
     next();
   });
 };
@@ -20,6 +28,8 @@ exports.factory = function(req, res, next, id){
 exports.create = function(req, res){
   var factory = new Factory(req.body);
   factory.user = req.user;
+  generateNumbers(factory);
+  
   factory.save(function(err){
     if (err) { res.render('error', {status: 500}); }
     else {
@@ -35,6 +45,7 @@ exports.show = function(req, res){
 exports.update = function(req, res){
   var factory = req.factory;
   factory = _.extend(factory, req.body);
+  generateNumbers(factory);
   factory.save(function(err){
     res.jsonp(factory);
   });

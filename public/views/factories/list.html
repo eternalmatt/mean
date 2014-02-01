@@ -9,12 +9,7 @@
 	        </form>
 	    </li>
 	    <li ng-repeat="factory in factories">
-            <factory
-                name="factory.name"
-                min="factory.min"
-                max="factory.max"
-               >
-           </factory>
+            <div factory="factory"></div>
 	    </li>
 	</ul>
 	<h1 ng-hide="factories">No factories yet.</h1>

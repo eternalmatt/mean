@@ -4,6 +4,7 @@ window.app = angular.module('passport', [
   'ngCookies',
   'ngResource',
   'ngRoute',
+  'ngRightClick',
   'ui.bootstrap',
   'ui.route',
   'passport.system',
@@ -16,5 +17,6 @@ angular.module('passport.system', [
 ]);
 
 angular.module('passport.controller', [
-  'passport.controller.factory'
+  'passport.controller.factory',
+  'passport.controller.popup'
 ]);
