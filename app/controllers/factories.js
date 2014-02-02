@@ -5,7 +5,7 @@ var mongoose = require('mongoose')
   , _ = require('lodash')
   ;
   
-function generateNodes(factory){
+function generateNodes(req, res, factory){
   var length = parseInt(factory.number) || 0;
   factory.nodes = _.map(Array(length), function(){
     return _.random(factory.min, factory.max);
@@ -29,7 +29,7 @@ exports.create = function(req, res){
   factory.user = req.user;
   factory.min = _.random(999);
   factory.max = _.random(factory.min, 1000);
-  generateNodes(factory);
+  generateNodes(req, res, factory);
   
   factory.save(function(err){
     if (err) { res.render('error', {status: 500}); }
@@ -46,7 +46,7 @@ exports.show = function(req, res){
 exports.update = function(req, res){
   var factory = req.factory;
   factory = _.extend(factory, req.body);
-  generateNodes(factory);
+  generateNodes(req, res, factory);
   factory.save(function(err){
     res.jsonp(factory);
   });
@@ -65,7 +65,10 @@ exports.destroy = function(req, res){
 exports.all = function(req, res){
   Factory
     .find()
-    .populate('user')
+    .populate({
+      path: 'user',
+      select: 'username'
+    })
     .exec(function(err, factories){
       if (err){ res.render('error', { status: 500} ); }
       else {
