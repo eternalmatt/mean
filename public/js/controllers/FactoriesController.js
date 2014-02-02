@@ -1,7 +1,5 @@
 angular.module('passport.controller.factory', [])
-  .controller('FactoriesController', function($scope, Factory, Popup){
-    
-    $scope.factories = Factory.query();
+  .controller('FactoriesController', function($scope, Factory, Popup, $timeout){
     $scope.popup = Popup;
     
     $scope.enableForm = function(){
@@ -20,6 +18,15 @@ angular.module('passport.controller.factory', [])
       $scope.showInput = false;
       $scope.factory = {};
     };
+
+    // a poor man's version of web sockets
+    function reload(){
+      Factory.query(function(factories){
+        $scope.factories = factories;
+      });
+      $timeout(reload, 1000);
+    }
+    reload();
     
   })
   

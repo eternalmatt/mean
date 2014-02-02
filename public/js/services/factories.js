@@ -8,6 +8,18 @@ angular.module('passport.services.factory', [])
     }, {
         update: {
             method: 'PUT'
+        },
+        query: {
+            method: 'GET',
+            isArray: true,
+            transformResponse: [ angular.fromJson, sortNodes ] //how cool is that?
         }
     });
+    
+    function sortNodes(data){
+      angular.forEach(data, function(value){
+        value.nodes.sort();
+      });
+      return data;
+    }
   })
