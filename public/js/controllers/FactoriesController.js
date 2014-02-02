@@ -1,5 +1,6 @@
 angular.module('passport.controller.factory', [])
-  .controller('FactoriesController', function($scope, Factory, Popup, $timeout){
+  .controller('FactoriesController', function($scope, Factory, Popup, $timeout, Global){
+    $scope.global = Global;
     $scope.popup = Popup;
     
     $scope.enableForm = function(){

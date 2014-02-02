@@ -1,17 +1,22 @@
 <section>
 	<h1 ng-hide="factories.length" ng-bind-template="'No factories yet.'">Loading</h1>
-    <div ng-hide="showForm">
-        <button ng-click="enableForm()">Create</button> a new Tesla factory        
-    </div>
-    <form ng-show="showForm"
-        ng-submit="saveFactory(factory)">
-        Name your Tesla Motors factory
-        <input type="text"
-           required
-           ng-model="factory.name"
-        >
-        <button>Create!</button>
-    </form>
+	<div ng-show="global.authenticated">
+        <div ng-hide="showForm">
+            <button ng-click="enableForm()">Create</button> a new Tesla factory        
+        </div>
+        <form ng-show="showForm"
+            ng-submit="saveFactory(factory)">
+            Name your Tesla Motors factory
+            <input type="text"
+               required
+               ng-model="factory.name"
+            >
+            <button>Create!</button>
+        </form>
+	</div>
+	<div ng-hide="global.authenticated">
+        Sign in to create new factories
+	</div>
     
 	<ul class="articles unstyled" ng-click="disableForm()">
 	    <li ng-repeat="factory in factories track by $index | orderBy:'created'">

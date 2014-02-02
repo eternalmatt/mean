@@ -1,6 +1,7 @@
 angular.module('passport.controller.popup', [])
-  .controller('PopupController', function($scope, $modalInstance, factory) {
+  .controller('PopupController', function($scope, $modalInstance, factory, Global) {
     var factoryResource = factory;
+    $scope.global = Global;
     $scope.factory = { 
       name : factory.name,
       number : factory.nodes.length,

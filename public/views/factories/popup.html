@@ -17,7 +17,9 @@
     </button>
 </div>
 <div class="modal-footer" ng-show="button.model=='delete'">
-    <button type="button" class="btn btn-primary" ng-click="ok(button.model, factory)">OK</button>
+    <button type="button" class="btn btn-primary" 
+        ng-click="ok(button.model, factory)"
+        ng-disabled="!global.isSignedIn()">OK</button>
     <button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>    
 </div>
 <form class="modal-body"
@@ -53,7 +55,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary">OK</button>
+        <button class="btn btn-primary" ng-disabled="!global.authenticated">OK</button>
         <button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>    
     </div>
 </form>
