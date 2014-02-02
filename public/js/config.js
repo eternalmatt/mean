@@ -8,12 +8,8 @@ angular.module('passport').config(['$routeProvider',
             templateUrl: 'views/factories/list.html',
             controller: 'FactoriesController'
         }).
-        
-        when('/', {
-            templateUrl: 'views/index.html'
-        }).
         otherwise({
-            redirectTo: '/'
+            redirectTo: '/factories'
         });
     }
 ]);
