@@ -6,12 +6,14 @@ ul, li {
     list-style-type: none;
 }
 
-li.nodes {
+[factory] li.nodes {
     display: inline-block;
+    margin-right: 2px;
 }
 
-[factory] li img {
+[factory] li.nodes img {
     width: 30px;
+    
 }
 [factory] img {
     width: 75px;

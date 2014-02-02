@@ -9,7 +9,8 @@ angular.module('passport.directives', [])
         popup: '='
       },
       controller: function($scope, $modal, Factory){
-        $scope.order = function(val){return val;};
+        $scope.factory.nodes.sort();
+        
         $scope.openPopup = function(popup, factory){
           popup.resolve.factory = function(){return factory;};
           $modal.open(popup);

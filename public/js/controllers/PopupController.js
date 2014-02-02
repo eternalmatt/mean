@@ -1,7 +1,11 @@
 angular.module('passport.controller.popup', [])
   .controller('PopupController', function($scope, $modalInstance, factory) {
     var factoryResource = factory;
-    $scope.factory = { name : factory.name, number : factory.nodes.length };
+    $scope.factory = { 
+      name : factory.name,
+      number : factory.nodes.length,
+      user: factory.user
+    };
     $scope.button = { model : 'generate' };
     $scope.form = {};
   

@@ -3,7 +3,7 @@
     The {{factory.name}} factory is producing units {{factory.min}}-{{factory.max}} today.
 </div>
 <ul>
-    <li class="nodes" ng-repeat="unit in factory.nodes track by $index | orderBy:order ">
+    <li class="nodes" ng-repeat="unit in factory.nodes track by $index">
         <img src="img/icons/tesla_logo_red.png" alt="Child {{$index}}: {{child}}">
         <div class="text" ng-bind="unit"></div>
     </li>
