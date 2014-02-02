@@ -1,7 +1,9 @@
 <div class="modal-header">
     <h3>Select action for factory {{factory.name}}</h3>
 </div>
-<form ng-submit="ok(button.model, factory)" class="modal-body form-group">
+<form class="modal-body form-group"
+      ng-submit="ok(button.model, factory)"
+      name="form.popup">
     <div class="btn-group">
         <button type="button"
             class="btn btn-primary"
@@ -19,19 +21,31 @@
     <div ng-show="button.model=='generate'" class="form-group">
         <div class="form-control">
             Name
-            <input type="text" 
+            <input type="text"
+                name="name" 
                 ng-model="factory.name"
-                ng-required>
+                required>
+        </div>
+        <div class="form-control" ng-show="nameRequiredError(form.popup)">
+            The factory's name is required
         </div>
         <div class="form-control">
             Number of nodes 
-            <input type="text" 
+            <input type="text"
+                name="number" 
                 ng-model="factory.number"
-                required>
+                required
+                valid-range >
+        </div>
+        <div class="form-control"  ng-show="numRequiredError(form.popup)">
+            The number of nodes is required
+        </div>
+        <div class="form-control"  ng-show="numOutOfRangeError(form.popup)">
+            The valid range is between 1 and 15
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" ng-submit>OK</button>
-        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>    
+        <button class="btn btn-primary">OK</button>
+        <button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>    
     </div>
 </form>
