@@ -19,34 +19,38 @@
     <button type="button" class="btn btn-primary" ng-click="ok(button.model, factory)">OK</button>
     <button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>    
 </div>
-<form class="modal-body form-group"
+<form class="modal-body"
       ng-show="button.model=='generate'" 
       ng-submit="ok(button.model, factory)"
       name="form.popup">
-        <div class="form-control">
-            Name
-            <input type="text"
-                name="name" 
-                ng-model="factory.name"
-                required>
-        </div>
-        <div class="form-control" ng-show="nameRequiredError(form.popup)">
+    <div class="form-group">
+        <label for="nameId">Name</label>
+        <input id="nameId"
+            class="form-control"
+            type="text"
+            name="name" 
+            ng-model="factory.name"
+            required>
+        <div ng-show="nameRequiredError(form.popup)">
             The factory's name is required
         </div>
-        <div class="form-control">
-            Number of nodes 
-            <input type="text"
-                name="number" 
-                ng-model="factory.number"
-                required
-                valid-range >
+    </div>
+    <div class="form-group">
+        <label for="numberId">Number of samples to show (range 1-15)</label> 
+        <input id="numberId"
+            class="form-control"
+            type="text"
+            name="number" 
+            ng-model="factory.number"
+            required
+            valid-range >
+        <div ng-show="numRequiredError(form.popup)">
+            The number of samples is required
         </div>
-        <div class="form-control"  ng-show="numRequiredError(form.popup)">
-            The number of nodes is required
-        </div>
-        <div class="form-control"  ng-show="numOutOfRangeError(form.popup)">
+        <div ng-show="numOutOfRangeError(form.popup)">
             The valid range is between 1 and 15
         </div>
+    </div>
     <div class="modal-footer">
         <button class="btn btn-primary">OK</button>
         <button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>    
