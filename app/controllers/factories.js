@@ -5,10 +5,9 @@ var mongoose = require('mongoose')
   , _ = require('lodash')
   ;
   
-function generateNumbers(factory){
-  factory.min = _.random(999);
-  factory.max = _.random(factory.min, 1000);
-  factory.nodes = _.map(Array(parseInt(factory.number)), function(){
+function generateNodes(factory){
+  var length = parseInt(factory.number) || 0;
+  factory.nodes = _.map(Array(length), function(){
     return _.random(factory.min, factory.max);
   });
 }
@@ -28,7 +27,9 @@ exports.factory = function(req, res, next, id){
 exports.create = function(req, res){
   var factory = new Factory(req.body);
   factory.user = req.user;
-  generateNumbers(factory);
+  factory.min = _.random(999);
+  factory.max = _.random(factory.min, 1000);
+  generateNodes(factory);
   
   factory.save(function(err){
     if (err) { res.render('error', {status: 500}); }
@@ -45,7 +46,7 @@ exports.show = function(req, res){
 exports.update = function(req, res){
   var factory = req.factory;
   factory = _.extend(factory, req.body);
-  generateNumbers(factory);
+  generateNodes(factory);
   factory.save(function(err){
     res.jsonp(factory);
   });
@@ -56,7 +57,7 @@ exports.destroy = function(req, res){
   factory.remove(function(err){
     if (err) { res.render('error', {status: 500}); }
     else {
-      res.jsonp();
+      res.jsonp(1);
     }
   });
 };
