@@ -1,10 +1,10 @@
 <div ng-rightclick="openPopup(popup, factory)">
     <img src="img/icons/factory.png" alt="Factory">
-    Factory {{factory.name}}: ({{factory.min}}-{{factory.max}})   
+    The {{factory.name}} factory is producing units {{factory.min}}-{{factory.max}} today.
 </div>
 <ul>
-    <li ng-repeat="child in factory.nodes | orderBy:order ">
+    <li class="nodes" ng-repeat="unit in factory.nodes track by $index | orderBy:order ">
         <img src="img/icons/tesla_logo_red.png" alt="Child {{$index}}: {{child}}">
-        {{child}}
+        <div class="text" ng-bind="unit"></div>
     </li>
 </ul>

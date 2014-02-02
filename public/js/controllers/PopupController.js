@@ -6,16 +6,16 @@ angular.module('passport.controller.popup', [])
     $scope.form = {};
   
     $scope.numRequiredError = function(form) {
-      return form.number.$dirty && form.number.$error.required;
+      return form.number && form.number.$dirty && form.number.$error.required;
     };
   
     $scope.numOutOfRangeError = function(form) {
       if ($scope.numRequiredError(form)) { return false; }
-      return form.number.$dirty && form.number.$error.validRange;
+      return form.number && form.number.$dirty && form.number.$error.validRange;
     };
   
     $scope.nameRequiredError = function(form) {
-      return form.name.$dirty && form.name.$error.required;
+      return form.name && form.name.$dirty && form.name.$error.required;
     };
   
     $scope.ok = function(action, factory) {

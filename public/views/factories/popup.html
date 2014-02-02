@@ -1,24 +1,28 @@
 <div class="modal-header">
     <h3>Select action for factory {{factory.name}}</h3>
 </div>
+<div class="btn-group">
+    <button type="button"
+        class="btn btn-primary"
+        btn-radio="'generate'"
+        ng-model="button.model">
+        Generate nodes
+    </button>
+    <button type="button"
+        class="btn btn-primary"
+        btn-radio="'delete'"
+        ng-model="button.model">
+        Delete
+    </button>
+</div>
+<div class="modal-footer" ng-show="button.model=='delete'">
+    <button type="button" class="btn btn-primary" ng-click="ok(button.model, factory)">OK</button>
+    <button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>    
+</div>
 <form class="modal-body form-group"
+      ng-show="button.model=='generate'" 
       ng-submit="ok(button.model, factory)"
       name="form.popup">
-    <div class="btn-group">
-        <button type="button"
-            class="btn btn-primary"
-            btn-radio="'generate'"
-            ng-model="button.model">
-            Generate nodes
-        </button>
-        <button type="button"
-            class="btn btn-primary"
-            btn-radio="'delete'"
-            ng-model="button.model">
-            Delete
-        </button>
-    </div>
-    <div ng-show="button.model=='generate'" class="form-group">
         <div class="form-control">
             Name
             <input type="text"
@@ -43,7 +47,6 @@
         <div class="form-control"  ng-show="numOutOfRangeError(form.popup)">
             The valid range is between 1 and 15
         </div>
-    </div>
     <div class="modal-footer">
         <button class="btn btn-primary">OK</button>
         <button type="button" class="btn btn-warning" ng-click="cancel()">Cancel</button>    

@@ -4,8 +4,12 @@ angular.module('passport.controller.factory', [])
     $scope.factories = Factory.query();
     $scope.popup = Popup;
     
-    $scope.enableInput = function(){
-      $scope.showInput = true;
+    $scope.enableForm = function(){
+      $scope.showForm = true;
+    };
+    
+    $scope.disableForm = function(){
+      $scope.showForm = false;
     };
     
     $scope.saveFactory = function(factory){

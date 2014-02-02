@@ -6,6 +6,10 @@ ul, li {
     list-style-type: none;
 }
 
+li.nodes {
+    display: inline-block;
+}
+
 [factory] li img {
     width: 30px;
 }

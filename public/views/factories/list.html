@@ -1,23 +1,22 @@
 <section>
-	<ul class="articles unstyled">
-	    <li ng-show="showInput">
-	        <form ng-submit="saveFactory(factory)">
-    	        <input type="text"
-    	           ng-required
-    	           ng-model="factory.name"
-    	        >
-	        </form>
-	    </li>
-	    <li ng-repeat="factory in factories | orderBy:'created'">
+	<h1 ng-hide="factories.length" ng-bind-template="'No factories yet.'">Loading</h1>
+    <div ng-hide="showForm">
+        <button ng-click="enableForm()">Create</button> a new Tesla factory        
+    </div>
+    <form ng-show="showForm"
+        ng-submit="saveFactory(factory)">
+        Name your Tesla Motors factory
+        <input type="text"
+           required
+           ng-model="factory.name"
+        >
+        <button>Create!</button>
+    </form>
+    
+	<ul class="articles unstyled" ng-click="disableForm()">
+	    <li ng-repeat="factory in factories track by $index | orderBy:'created'">
             <div factory="factory" popup="popup">
             </div>
 	    </li>
 	</ul>
-	<h1 ng-hide="!!factories">No factories yet.</h1>
-	<div>
-	    Why don't you 
-	    <button ng-click="enableInput()">
-	    Create One
-        </button>
-    </div>
 </section>
